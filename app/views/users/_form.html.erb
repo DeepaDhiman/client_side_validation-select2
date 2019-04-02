@@ -1,0 +1,44 @@
+<%= form_for @user,validate: true,id: "myform"  do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name,validate: true  %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <div class="abc" id="abc1">
+      <%= f.select :title, ['Analytics','Commerce','Content Management','Gaming','Green','Media','Social Media','Technology - Software','Technology - Hardware', 'Web'], :include_blank => '-- Select One --'%>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :country %>
+    <div class="abc" id="abc2">
+      <%= f.select :country, ['Analytics','Commerce','Technology - Software','Technology - Hardware', 'Web'], :include_blank => '-- Select One --' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <%#= f.validate :title %>
+
+  <div class="actions ">
+    <%= f.submit "submit",:class=>"btn" ,id: "user_s"%>
+  </div>
+<% end %>
+
+    
+    
